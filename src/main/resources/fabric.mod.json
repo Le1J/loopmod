@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "loopmod",
+  "version": "${version}",
+  "name": "Loop Mod",
+  "description": "Enregistre et répète des mouvements en boucle, avec chrono, compteur de blocs cassés et pêche automatique.",
+  "authors": [],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.loopmod.LoopModClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+gradle-9.8.1/
+
+# Fabric Loom
+run/
+.loom/
+
+# IDE / Editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS Files
+.DS_Store
+Thumbs.db
