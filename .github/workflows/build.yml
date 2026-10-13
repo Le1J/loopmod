@@ -21,18 +21,14 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '9.2.1'
-
-      - name: Compile mod
-        working-directory: loopmod
-        run: gradle build
+      - name: Build mod
+        run: |
+          chmod +x gradlew
+          ./gradlew build
 
       - name: Upload compiled mod
         uses: actions/upload-artifact@v4
         with:
           name: loopmod-jar
-          path: loopmod/build/libs/*.jar
+          path: build/libs/*.jar
           if-no-files-found: error
