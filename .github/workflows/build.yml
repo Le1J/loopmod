@@ -1,23 +1,38 @@
-name: Build du mod
+name: Build Loopmod
 
 on:
   push:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 9.2.0
-      - run: gradle build
-      - uses: actions/upload-artifact@v4
+          gradle-version: '9.2.1'
+
+      - name: Compile mod
+        working-directory: loopmod
+        run: gradle build
+
+      - name: Upload compiled mod
+        uses: actions/upload-artifact@v4
         with:
           name: loopmod-jar
-          path: build/libs/*.jar
+          path: loopmod/build/libs/*.jar
+          if-no-files-found: error
